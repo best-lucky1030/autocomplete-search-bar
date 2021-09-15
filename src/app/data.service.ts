@@ -8,11 +8,14 @@ import { Post } from './post';
 })
 export class DataService {
 
-  searchOption = [];
-  // public postsData: Post[];
-  postUrl : string = "https://jsonplaceholder.typicode.com/posts";
+  searchOption = []
+  public postsData: Post[]
+  postUrl : string = "https://jsonplaceholder.typicode.com/posts"
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+  ) {}
+
   getPosts() : Observable<Post[]> {
     return this.http.get<Post[]>(this.postUrl);
   }
