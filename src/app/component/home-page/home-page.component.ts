@@ -12,7 +12,9 @@ export class HomePageComponent implements OnInit {
   post: Post[]
   constructor(
     private dataService: DataService
-  ) { }
+  ) {
+    this.post = [];
+  }
 
   ngOnInit(): void {
     this.dataService.getPosts().subscribe(posts => {

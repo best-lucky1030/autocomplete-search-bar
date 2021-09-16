@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from './post';
 
 @Injectable({
@@ -14,9 +14,12 @@ export class DataService {
 
   constructor(
     private http: HttpClient
-  ) {}
+  ) {
+    this.postsData = [];
+  }
 
   getPosts() : Observable<Post[]> {
     return this.http.get<Post[]>(this.postUrl);
   }
+
 }

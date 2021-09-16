@@ -13,5 +13,7 @@ export class AppComponent {
   post: Post[]
   constructor(
     private dataService: DataService
-  ) {}
+  ) {
+    this.post = [];
+  }
 }
