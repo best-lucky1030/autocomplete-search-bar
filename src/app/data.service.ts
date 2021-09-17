@@ -22,4 +22,19 @@ export class DataService {
     return this.http.get<Post[]>(this.postUrl);
   }
 
+  filteredListOptions() {
+    let posts = this.postsData;
+    let filteredPostsList = [];
+
+    for (let post of posts) {
+      for (let options of this.searchOption) {
+        if (otpions.title === post.title) {
+          filteredPostsList.push(post);
+        }
+      }
+    }
+    console.log(filteredPostsList);
+    return filteredPostsList;
+  }
+
 }

@@ -23,4 +23,16 @@ export class HomePageComponent implements OnInit {
     });
   }
 
+  onSelectedFilter(e) {
+    this.getFilteredExpenseList();
+  }
+
+  getFilteredExpenseList() {
+    if (this.dataService.searchOption.length > 0) {
+      this.post = this.dataService.filteredListOptions();
+    } else {
+      this.post = this.dataService.postsData;
+    }
+  }
+
 }

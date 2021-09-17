@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DataService } from '../../data.service';
@@ -21,6 +21,9 @@ export class SearchBarComponent implements OnInit {
   ) {
     this.allPosts = [];
     this.autoCompleteList = [];
+
+    @ViewChild('autoCompleteInput') autoCompleteInput: ElementRef;
+    @Output() onSelectedOption = new EventEmitter();
   }
 
   ngOnInit(): void {
@@ -29,6 +32,31 @@ export class SearchBarComponent implements OnInit {
     this.dataService.getPosts().subscribe(posts => {
       this.allPosts = posts;
     });
+
+    // when user types something in input, the value changes will come through MatChipsModule
+    this.myControl.valueChanges.subscribe(userInput => {
+      this.autoCompleteExpenseList(userInput);
+    })
+  }
+
+
+  private autoCompleteExpenseList(input) {
+    let categoryList = this.filterCategoryList(input)
+    this.autoCompleteList = categoryList;
+  }
+
+  // this is where filtering the data happens according to you typed value
+  filterCategoryList(val) {
+    var categoryList = []
+    if (typeof val != "string") {
+      return [];
+    }
+
+    if (val === '' || val === null) {
+      return [];
+    }
+
+    return val ? this.allPosts.filter(s => s.title.toLowerCase().indexOf(val.toLowerCase())) : this.allPosts;
   }
 
 }
