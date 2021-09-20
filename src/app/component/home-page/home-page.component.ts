@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
-import {Post} from '../../post';
-
+import { Post } from '../../post';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -12,27 +11,27 @@ export class HomePageComponent implements OnInit {
   post: Post[]
   constructor(
     private dataService: DataService
-  ) {
-    this.post = [];
-  }
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.dataService.getPosts().subscribe(posts => {
-      this.post = posts;
-      this.dataService.postsData = posts;
+      this.post = posts
+      this.dataService.postsData = posts
     });
   }
 
-  onSelectedFilter(e) {
+  onSelectedOption(e) {
     this.getFilteredExpenseList();
   }
 
   getFilteredExpenseList() {
-    if (this.dataService.searchOption.length > 0) {
+    if (this.dataService.searchOption.length > 0)
       this.post = this.dataService.filteredListOptions();
-    } else {
+    else {
       this.post = this.dataService.postsData;
     }
+
+    console.log(this.post)
   }
 
 }
