@@ -22,7 +22,7 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  onSelectedOption(e) {
+  onSelectedFilter(e) {
     this.getFilteredExpenseList();
   }
 
