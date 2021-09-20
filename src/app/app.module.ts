@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { DataService } from './data.service';
@@ -24,10 +26,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    // MatIconModule,
+    MatIconModule,
     MatFormFieldModule,
     MatChipsModule,
-    // MatInputModule
+    MatInputModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

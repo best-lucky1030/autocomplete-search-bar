@@ -11,7 +11,9 @@ export class HomePageComponent implements OnInit {
   post: Post[]
   constructor(
     private dataService: DataService
-  ) { }
+  ) {
+    this.post = [];
+  }
 
   ngOnInit() {
     this.dataService.getPosts().subscribe(posts => {
